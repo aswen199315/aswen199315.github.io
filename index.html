@@ -442,6 +442,106 @@ a.fref{text-decoration:none}
 .try .devs button.alarm::before{content:"● ";color:var(--red)}
 .try [disabled]{opacity:.45;cursor:not-allowed}
 
+/* ═════════════ AI 工具页 ═════════════ */
+.tool{margin-top:14px;padding:20px 22px;display:grid;gap:16px;border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft),0 18px 60px -30px var(--accent)}
+.tool-h h2{font-size:clamp(22px,2.6vw,28px);color:var(--accent);text-shadow:0 0 22px var(--accent-line)}
+.tool-h p{margin-top:6px;color:var(--text);font-size:15.5px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.facts div{border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:10px 12px}
+.facts span{font:600 11.5px var(--font-mono);letter-spacing:.12em;color:var(--accent)}
+.facts p{margin-top:4px;font-size:14px;color:var(--text-2)}
+.tool .try{margin:0;padding:0;border:0;box-shadow:none;background:none}
+.tool .try input.narrow{flex:0 1 220px;min-width:160px}
+.off{font-size:13px;color:var(--amber)}
+.steps-row{display:flex;align-items:center;gap:14px;margin:18px 0 12px;scroll-margin-top:76px}
+.steps{flex:1;--step:.6s}
+.steps .fnode{animation:none;font-weight:600}
+.steps.busy .fnode{animation:nodeOn calc(var(--n) * var(--step)) linear infinite;animation-delay:calc(var(--i) * var(--step))}
+.steps .flink::after{animation:none;opacity:0}
+.steps.busy .flink::after{opacity:1;animation:packet calc(var(--n) * var(--step)) linear infinite;animation-delay:calc(var(--i) * var(--step) + var(--step) * .3)}
+.steps .fnode.done{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.timer{font:12.5px var(--font-mono);color:var(--text-3);min-width:64px;text-align:right}
+.result{padding:18px 22px 22px;animation:logIn .4s var(--ease) both}
+.res-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--line-soft)}
+.res-h .who{font-weight:700;color:var(--text);font-size:16px}
+.res-h .note{font:12.5px var(--font-mono);color:var(--accent)}
+.res-h .btn{margin-left:auto}
+.res-b{display:grid;gap:12px;font-size:14.5px;line-height:1.7}
+.res-b>*{animation:logIn .45s var(--ease) both}
+.res-b h4{font:600 13px var(--font-mono);letter-spacing:.06em;color:var(--accent);margin-top:6px}
+.res-b .sum{font-size:16px;color:var(--text);padding:12px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0}
+.res-b .blk{border:1px solid var(--line);border-radius:12px;background:var(--surface-2);padding:12px 14px}
+.res-b .blk h4{margin:0 0 6px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ul.dots{list-style:none;padding:0;display:grid;gap:6px}
+ul.dots li{position:relative;padding-left:14px;color:var(--text-2)}
+ul.dots li::before{content:"";position:absolute;left:2px;top:.7em;width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px var(--accent)}
+ul.dots li b,ol.nums li b{color:var(--text);font-weight:600;margin-right:6px}
+ul.dots small,ol.nums small{display:block;color:var(--text-3);font-size:13px}
+ol.nums{padding-left:20px;display:grid;gap:6px;color:var(--text-2)}
+.srcs{font-size:13px;color:var(--text-3);border-top:1px dashed var(--line-2);padding-top:10px}
+.srcs summary{cursor:pointer;color:var(--text-2)}
+.srcs div{margin-top:4px;line-height:1.5}
+.srcs a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:2px}
+.lv,.tag{display:inline-grid;place-items:center;min-width:24px;height:22px;padding:0 7px;border-radius:6px;font:700 12px var(--font-mono);border:1px solid}
+.lv.hi,.tag.hi{color:var(--red);border-color:rgba(255,107,107,.5);background:rgba(255,107,107,.08)}
+.lv.md,.tag.md{color:var(--amber);border-color:rgba(242,193,78,.5);background:rgba(242,193,78,.07)}
+.lv.lo,.tag.lo{color:var(--text-2);border-color:var(--line-2)}
+.tag{margin-right:6px;font-size:11px;height:19px}
+.causes{display:grid;gap:8px}
+.cause{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);padding:10px 12px}
+.cause b{color:var(--text)}
+.cause p{color:var(--text-2);font-size:14px}
+.cause .chk{color:var(--text-3);font-size:13px}
+.onsite{margin-top:8px;font-size:13.5px;color:var(--text-2)}
+.ticket dl{display:grid;grid-template-columns:56px minmax(0,1fr);gap:6px 10px;font-size:14px}
+.ticket dt{color:var(--text-3)}
+.ticket dd{margin:0;color:var(--text)}
+.ticket .chips span{margin:0 6px 4px 0}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
+.tbl th{font:600 12px var(--font-mono);color:var(--text-3);text-align:left;padding:8px 10px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--line-soft);color:var(--text-2)}
+.tbl td:first-child{color:var(--text);font-weight:600}
+.tbl .mono{font-family:var(--font-mono);font-size:12.5px;color:var(--cyan)}
+.kv2{display:grid;grid-template-columns:72px minmax(0,1fr);gap:6px 12px;font-size:14px}
+.kv2 dt{color:var(--text-3)}
+.kv2 dd{margin:0;color:var(--text-2)}
+.mods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.mod{border:1px solid var(--line);border-radius:12px;background:var(--surface-2);padding:10px 12px;font-size:13.5px}
+.mod em{font:600 11px var(--font-mono);font-style:normal;color:var(--cyan)}
+.mod b{display:block;color:var(--text);margin:2px 0 4px}
+.mod ul{padding-left:16px;color:var(--text-2)}
+.rules{display:grid;gap:6px}
+.rule{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);padding:8px 12px;font-size:13.5px;color:var(--text-2)}
+.rule i{font-style:normal;color:var(--accent);text-align:center}
+.phases{display:grid;gap:8px}
+.ph b{display:flex;gap:8px;align-items:baseline;color:var(--text)}
+.ph b em{font:12px var(--font-mono);font-style:normal;color:var(--accent)}
+.ph p{color:var(--text-2);font-size:13.5px}
+.wait{color:var(--text-3);display:flex;align-items:center;gap:8px}
+.err{color:#ffc0c0;border:1px solid rgba(255,107,107,.45);background:rgba(255,107,107,.08);border-radius:10px;padding:10px 12px}
+@media (max-width:900px){
+  .facts,.grid2{grid-template-columns:1fr}
+  .mods{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rule{grid-template-columns:1fr;gap:2px}
+  .rule i{text-align:left;transform:rotate(90deg);width:14px}
+  .tool .try input.narrow{flex:1 1 100%}
+}
+@media (max-width:640px){
+  .mods{grid-template-columns:1fr}
+  .tool{padding:16px}
+  .result{padding:14px 16px 18px}
+  .steps-row{flex-wrap:wrap}
+  .steps .fnode{font-size:11px;padding:6px 3px}
+}
+@media (max-width:640px){
+  .facts{gap:4px}
+  .facts div{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border:0;background:none;border-left:2px solid var(--accent-line);border-radius:0}
+  .facts p{margin:0;font-size:13.5px}
+  .tool-h p{font-size:14.5px}
+}
+
 /* ── 响应式 ── */
 @media (max-width:980px){
   .hero-grid{grid-template-columns:1fr}
@@ -501,7 +601,7 @@ a.fref{text-decoration:none}
     <a href="#exp" data-r="home">经历</a>
     <a href="#skills" data-r="home">技能</a>
     <span class="sep"></span>
-    <a href="#/agents" class="lab" data-r="agents">Agent 实验室<em>DEMO</em></a>
+    <a href="#/agents" class="lab" data-r="agents">AI 工具<em>LIVE</em></a>
   </nav>
   <a class="btn sm" href="pdf/朱先生简历.pdf" target="_blank" rel="noopener">简历 PDF</a>
 </div></header>
@@ -516,7 +616,7 @@ a.fref{text-decoration:none}
         <h1>朱先生<span class="role">产品总监 · <span id="typed"></span><i class="caret" aria-hidden="true"></i></span></h1>
         <p class="lead" id="lead"></p>
         <div class="cta">
-          <a class="btn primary" href="#/agents">试用 3 个 Agent →</a>
+          <a class="btn primary" href="#/agents">使用 3 个 AI 工具 →</a>
           <a class="btn" href="#projects">看项目</a>
         </div>
       </div>
@@ -526,7 +626,7 @@ a.fref{text-decoration:none}
   </section>
 
   <section class="shell" id="teaser">
-    <div class="sec-h rv"><h2 class="scr">Agent 实验室</h2><span class="en">AGENT LAB</span></div>
+    <div class="sec-h rv"><h2 class="scr">AI 工具</h2><span class="en">AI TOOLS</span></div>
     <div class="teasers" id="teasers"></div>
   </section>
 
@@ -555,64 +655,30 @@ a.fref{text-decoration:none}
   <footer id="foot"></footer>
 </main>
 
-<!-- ═════════════ Agent 实验室 ═════════════ -->
+<!-- ═════════════ AI 工具 ═════════════ -->
 <main id="lab" hidden>
   <section class="shell lab-head">
-    <div class="kicker">AGENT LAB</div>
-    <h1>Agent 实验室 · <span>3 个 Agent</span></h1>
+    <div class="kicker">AI TOOLS</div>
+    <h1>AI 工具 · <span>可直接使用</span></h1>
   </section>
 
-  <section class="shell lab-sec" id="benchSec">
+  <section class="shell lab-sec">
     <div class="atabs" role="tablist" id="atabs"></div>
-    <div class="now" id="nowDesc"></div>
-    <div class="try card glow" id="tryBar" hidden></div>
-    <div class="ctl">
-      <span class="state" id="state"><i></i><span>待播放</span></span>
-      <button class="btn sm primary" id="playBtn" type="button">▶ 播放</button>
-      <button class="btn sm" id="restartBtn" type="button">↺ 重播</button>
-      <div class="seg" role="group" aria-label="播放速度"><button type="button" data-sp="1" aria-pressed="true">1×</button><button type="button" data-sp="2" aria-pressed="false">2×</button><button type="button" data-sp="4" aria-pressed="false">4×</button></div>
-      <span class="grow"></span>
-      <div class="modes" role="group" aria-label="运行方式">
-        <button type="button" data-m="main" aria-pressed="true">示例回放</button>
-        <button type="button" data-m="edge" aria-pressed="false">越界请求</button>
-      </div>
+    <div class="tool card glow" id="tool">
+      <div class="tool-h"><h2 id="tName"></h2><p id="tRes"></p></div>
+      <div class="facts" id="tFacts"></div>
+      <div class="try" id="tryBar"></div>
+      <p class="off" id="offNote" hidden>在线使用暂时不可用，下面是示例结果。</p>
     </div>
-    <div class="scrub" id="scrub" title="点圆点跳到对应步骤"><div class="bar"></div><div class="fill" id="scrubFill"></div></div>
-
-    <div class="bench" id="bench" data-pane="chat">
-      <div class="mtabs" role="tablist">
-        <button type="button" data-p="chat" aria-selected="true">对话</button>
-        <button type="button" data-p="back" aria-selected="false" id="backTab">幕后<span class="badge" id="unseen" hidden>0</span></button>
-      </div>
-      <div class="pane card chatpane">
-        <div class="pane-h"><span class="dot"></span><b>用户视图</b><span id="chatTitle"></span><span class="r" id="srcLbl"></span></div>
-        <div class="ticker" id="ticker"><b>幕后</b><span>等待开始</span></div>
-        <div class="chat" id="chat" aria-live="polite"></div>
-      </div>
-      <div class="pane card back" id="back">
-        <div class="pane-h"><span class="dot" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan)"></span><b>幕后</b><span>Agent 工作过程</span><span class="r" id="clock">+0.0s</span></div>
-        <div class="back-body">
-          <div><div class="blk-t">AGENTS</div><div class="roster" id="roster"></div></div>
-          <div><div class="blk-t">护栏 GUARDRAILS</div><div class="guards" id="guards"></div></div>
-          <div><div class="blk-t">共享上下文 CONTEXT</div><div class="ctx" id="ctx"></div></div>
-          <div class="special" id="special"></div>
-          <div class="trace-wrap"><div class="blk-t">调用链 TRACE</div><div class="trace" id="trace"></div></div>
-          <div id="summary" hidden></div>
-        </div>
-      </div>
-    </div>
+    <div class="steps-row"><div class="flow steps" id="steps"></div><span class="timer" id="timer"></span></div>
+    <div class="result card" id="result"></div>
   </section>
-  <section class="shell lab-sec" style="padding-top:28px">
-    <div class="sub-h"><h2>能力地图</h2><small>点绿点跳到对应步骤</small></div>
-    <div class="card matrix-wrap"><table class="matrix" id="matrix"></table></div>
-  </section>
-
   <footer id="foot2"></footer>
 </main>
 
 <script src="assets/config.js"></script>
 <script src="data/resume.js"></script>
-<script src="assets/replays.js"></script>
+<script src="assets/examples.js"></script>
 <script>
 (() => {
 "use strict";
@@ -625,9 +691,9 @@ const mk = (tag, cls, html) => { const e = document.createElement(tag); if (cls)
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* ═════════════ 数据：简历（data/resume.js，和 PDF 共用）+ 回放（assets/replays.js，真实运行录制） ═════════════ */
-const R = window.RESUME, RP = window.REPLAYS, FLEET = window.FLEET;
+const R = window.RESUME, EX = window.EXAMPLES;
 const API = (window.SITE && window.SITE.api) || "";
-const KEYS = ["intel", "console", "ops"]; // 售前 → 使用 → 售后
+const KEYS = ["intel", "diag", "plan"]; // 销售 → 售后 → 产品
 const AG = Object.fromEntries(R.agents.map((a) => [a.key, a]));
 const BLIPS = [
   { k: "电信运营商", a: 32, r: 0.78 }, { k: "物流车联网", a: 112, r: 0.62 }, { k: "长租公寓 IoT", a: 168, r: 0.8 },
@@ -641,7 +707,7 @@ $("#lead").textContent = R.intro;
 $("#nums").innerHTML = R.numbers.map((n) => `<div class="num"><b><span data-to="${n.to}">0</span><small>${esc(n.unit)}</small></b><span>${esc(n.label)}</span></div>`).join("");
 $("#teasers").innerHTML = KEYS.map((k, i) => {
   const a = AG[k];
-  return `<a class="card teaser glow rv" style="--i:${i}" href="#/agents/${k}"><span class="no">AGENT ${a.no} · ${esc(a.stage)}</span><h3>${esc(a.t)}</h3><p>${esc(a.res)}</p><div class="mini" data-k="${k}"></div><span class="go">试用 <i>→</i></span></a>`;
+  return `<a class="card teaser glow rv" style="--i:${i}" href="#/agents/${k}"><span class="no">TOOL ${a.no} · ${esc(a.tag)}</span><h3>${esc(a.t)}</h3><p>${esc(a.res)}</p><div class="mini" data-k="${k}"></div><span class="go">立即使用 <i>→</i></span></a>`;
 }).join("");
 $("#projList").innerHTML = R.projects.map((p, i) => `
   <article class="card proj glow rv" style="--i:${i % 2}">
@@ -739,10 +805,15 @@ const io = new IntersectionObserver((ents) => {
 }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
 $$(".rv").forEach((n) => io.observe(n));
 
-/* 首页 Agent 卡片里的小终端（内容取自真实运行） */
+/* 首页工具卡片里的小终端（内容取自示例结果） */
+const TEASER = {
+  intel: () => { const b = EX.intel.brief; return [["", "? " + EX.intel.input.name], ["c", `› 相关报道 ${EX.intel.news} 条`], ["", "✓ " + b.sections.map((x) => x.cat + " " + x.points.length).join(" · ")], ["g", `✓ 拜访话题 ${b.visit.length} 个`]]; },
+  diag: () => { const r = EX.diag.result, i = EX.diag.input; return [["", `? ${i.device}：${i.symptom}`], ["c", `› 可能原因 ${r.causes.length} 个`], ["", `  1. ${r.causes[0].cause} · ${r.causes[0].level}`], ["", `✓ 先做 ${r.steps.length} 步排查`], ["g", `✓ 工单：${r.ticket.title}`]]; },
+  plan: () => { const m = EX.plan.model, o = EX.plan.ops; return [["", "? " + EX.plan.input.device], ["c", `› 物模型 ${m.properties.length} 个属性 · ${m.events.length} 个事件`], ["", `› 平台功能 ${o.modules.length} 个模块`], ["", `✓ 自动规则 ${o.rules.length} 条`], ["g", `✓ ${o.phases[0].phase} ${o.phases[0].weeks}上线`]]; }
+};
 (() => {
   $$(".mini").forEach((box) => {
-    const lines = RP[box.dataset.k].teaser;
+    const lines = TEASER[box.dataset.k]();
     if (RM) { box.innerHTML = lines.map(([c, t]) => `<div class="${c}">${esc(t)}</div>`).join(""); return; }
     let i = 0;
     (function tick() {
@@ -866,555 +937,189 @@ const Net = (() => {
   return { on() { active = true; size(); kick(); }, off() { active = false; } };
 })();
 
-/* ═════════════ Agent 实验室 ═════════════ */
-const CAPS = [
-  { id: "tool", n: "工具调用", d: "按需调接口" },
-  { id: "handoff", n: "多 Agent 交接", d: "分工、转交" },
-  { id: "gui", n: "操作网页", d: "读页面、点击、填写" },
-  { id: "human", n: "人工确认", d: "关键操作等人点" },
-  { id: "guard", n: "安全护栏", d: "越权、注入、隐私" },
-  { id: "rag", n: "检索带出处", d: "查资料、标来源" },
-  { id: "genui", n: "对话里出图表", d: "图表、卡片" },
-  { id: "trace", n: "全程可追踪", d: "每步耗时" }
-];
-const LAB = { cur: "intel", mode: "main", idx: 0, playing: false, speed: 1, loop: 0, gen: 0, t: 0, t0: 0, stats: null, approve: null, pane: "chat", unseen: 0, auto: false, liveOK: false };
-const chat = $("#chat"), tryBar = $("#tryBar"), trace = $("#trace"), roster = $("#roster"), guardsEl = $("#guards"), ctxEl = $("#ctx"), special = $("#special"), bench = $("#bench"), backEl = $("#back");
-const S = () => RP[LAB.cur];
-const EV = () => (LAB.mode === "live" ? [] : S()[LAB.mode]);
-const agentOf = (id) => S().roster.find((r) => r.id === id) || { id, n: id, c: "var(--accent)" };
-const nap = (ms, instant) => (instant ? Promise.resolve() : wait(ms / LAB.speed));
-const isMobile = () => matchMedia("(max-width:900px)").matches;
-const backVisible = () => !isMobile() || LAB.pane === "back";
-
-/* 能力地图 */
-(() => {
-  const head = `<thead><tr><th></th>${CAPS.map((c) => `<th class="capcol" data-cap="${c.id}" title="${c.d}">${c.n}<small>${c.d}</small></th>`).join("")}</tr></thead>`;
-  const rows = KEYS.map((k) => `<tr data-k="${k}"><th><button type="button" data-row="${k}">${AG[k].no} ${esc(AG[k].t)}<small>${esc(AG[k].stage)}</small></button></th>${CAPS.map((c) => {
-    const m = RP[k].matrix[c.id];
-    return `<td>${m ? `<button type="button" class="cell" data-k="${k}" data-cap="${c.id}" data-m="${m[0]}"><i></i>${esc(m[1])}</button>` : '<span class="none">—</span>'}</td>`;
-  }).join("")}</tr>`).join("");
-  $("#matrix").innerHTML = head + "<tbody>" + rows + "</tbody>";
-  $("#matrix").addEventListener("click", (e) => {
-    const c = e.target.closest(".cell");
-    if (c) { seekCap(c.dataset.k, c.dataset.m, c.dataset.cap); return; }
-    const r = e.target.closest("[data-row]");
-    if (r) { setup(r.dataset.row, "main"); play(); }
-  });
-})();
-$("#atabs").innerHTML = KEYS.map((k) => `<button type="button" role="tab" class="atab" data-k="${k}" aria-selected="false"><span class="no">${AG[k].no}</span><b>${esc(AG[k].t)}</b><em>${esc(AG[k].stage)}</em></button>`).join("");
-$("#atabs").addEventListener("click", (e) => { const b = e.target.closest(".atab"); if (b) { setup(b.dataset.k, "main"); play(); } });
-
-/* 幕后的特殊面板：设备看板 / 检索结果 / 模拟后台 */
-const SPECIAL = {
-  fleet: {
-    init(el) {
-      el.innerHTML = `<div class="blk-t">门店设备 · 6 台（模拟）</div><div class="fleet">${FLEET.map(([id, store, s, lab]) => `<div class="dev" data-id="${id}" data-s="${s}"><b><i></i>${id}</b><small>${store} · <span>${lab}</span></small></div>`).join("")}</div>`;
-    },
-    set(id, s, lab) { const d = $(`.dev[data-id="${id}"]`, special); if (!d) return; d.dataset.s = s; $("span", d).textContent = lab; return d; }
+/* ═════════════ AI 工具 ═════════════ */
+// 三个工具：客户情报（/api/intel，流式）、设备故障诊断（/api/diag）、IoT 产品方案（/api/plan，流式）
+// 页面打开时先显示示例结果（assets/examples.js，真实运行生成），用户运行后换成自己的结果
+const attrJ = (o) => esc(JSON.stringify(o));
+const TOOLS = {
+  intel: {
+    steps: ["检索报道", "去重筛选", "按主题归类", "写成简报"],
+    ex: [{ name: "蜜雪冰城" }, { name: "瑞幸咖啡" }, { name: "库迪咖啡" }],
+    form: () => `<div class="row"><input id="fA" maxlength="20" placeholder="输入公司名" aria-label="公司名"><button class="btn primary" id="go" type="button">生成简报 →</button></div>`,
+    exLabel: (b) => b.name,
+    read: () => ({ name: $("#fA").value.trim() }),
+    fill: (b) => { $("#fA").value = b.name; },
+    ok: (b) => !!b.name,
+    label: (b) => b.name
   },
-  news: {
-    init(el) { el.innerHTML = `<div class="blk-t">检索结果</div><div class="queries" id="qs"></div><ol class="news" id="newsList"><li class="ph">还没有检索</li></ol>`; },
-    plan(e) { $("#qs", special).innerHTML = e.queries.map((q) => `<span>${esc(q)}</span>`).join(""); },
-    more(q) { const qs = $("#qs", special); if (qs && ![...qs.children].some((x) => x.textContent === q)) qs.insertAdjacentHTML("beforeend", `<span>${esc(q)}</span>`); },
-    list(e) {
-      const box = $("#newsList", special);
-      box.innerHTML = e.items.map((it, i) => `<li data-id="${esc(it.id)}" style="--i:${Math.min(i, 12)}"><span class="n">${esc(it.id)}</span><span class="t">${esc(it.title)} <small>· ${esc(it.source)} ${esc(String(it.date).slice(5))}</small></span><span class="c"></span></li>`).join("");
-      return box;
-    },
-    labels(e) {
-      for (const l of e.labels) {
-        const li = $(`.news li[data-id="${CSS.escape(l.id)}"]`, special); if (!li) continue;
-        $(".c", li).textContent = l.cat === "负面" ? "负面 · 排除" : l.cat;
-        li.classList.toggle("neg", l.cat === "负面"); li.classList.toggle("irr", l.cat === "无关");
-      }
-      return $("#newsList", special);
-    }
+  diag: {
+    steps: ["理解故障现象", "排查可能原因", "给出处理步骤", "生成维修工单"],
+    ex: [{ device: "商用制冰机", symptom: "出冰越来越慢，冰块变小、发软" }, { device: "智能门锁", symptom: "指纹经常识别失败，要按好几次" }, { device: "电动车充电桩", symptom: "插枪后不启动充电，屏幕提示绝缘故障" }],
+    form: () => `<div class="row"><input id="fA" class="narrow" maxlength="40" placeholder="设备，例如：商用咖啡机" aria-label="设备"><input id="fB" maxlength="300" placeholder="故障现象，例如：出水量忽大忽小，有异响" aria-label="故障现象"><button class="btn primary" id="go" type="button">开始诊断 →</button></div>`,
+    exLabel: (b) => `${b.device}：${b.symptom}`,
+    read: () => ({ device: $("#fA").value.trim(), symptom: $("#fB").value.trim() }),
+    fill: (b) => { $("#fA").value = b.device; $("#fB").value = b.symptom; },
+    ok: (b) => !!(b.device && b.symptom),
+    label: (b) => `${b.device} · ${b.symptom}`
   },
-  admin: {
-    st: null,
-    init(el) { this.st = { store: "全部门店", status: "全部状态", rows: null, sel: [], chg: [], modal: null, wos: [], cf: null, ok: null }; this.draw(); },
-    draw() {
-      const s = this.st;
-      const rows = s.rows ? `<table>${s.rows.map(([id, store, st, rc]) => `<tr class="${s.sel.includes(id) ? "sel" : ""} ${s.chg.includes(id) ? "chg" : ""}"><td>${esc(id)}</td><td>${esc(store)}</td><td>${esc(st)}</td><td>${esc(rc)}</td></tr>`).join("")}</table>` : `<p class="ph">设备列表 · 10 台</p>`;
-      const m = s.cf ? `<div class="modal cf">🔒 确认下发配方 <b>${esc(s.cf.ver)}</b> 到 ${esc(s.cf.ids.join("、"))}？只能人点</div>`
-        : s.ok ? `<div class="modal okm">✓ ${s.ok}</div>` : s.modal ? `<div class="modal">${s.modal}</div>` : "";
-      special.innerHTML = `<div class="blk-t">模拟后台 · Agent 正在操作的页面</div><div class="adm"><div class="f"><span class="${s.store !== "全部门店" ? "set" : ""}">门店：${esc(s.store)}</span><span class="${s.status !== "全部状态" ? "set" : ""}">状态：${esc(s.status)}</span>${s.sel.length ? `<span class="set">已选 ${s.sel.length} 台</span>` : ""}</div>${rows}${m}${s.wos.length ? `<div class="wos">${s.wos.map((w) => `✓ ${esc(w.no)} · ${esc(w.dev)} · ${esc(w.pri)}优先级 · ${esc(w.who)}`).join("<br>")}</div>` : ""}</div>`;
-      return $(".adm", special);
-    },
-    page(e) {
-      const s = this.st;
-      if (e.op === "filter") { if (e.field === "门店") s.store = e.value; if (e.field === "状态") s.status = e.value; s.ok = null; }
-      if (e.op === "query") { s.rows = e.rows; s.sel = []; s.chg = []; }
-      if (e.op === "select") s.sel = e.ids;
-      if (e.op === "wo_open") { s.modal = `新建工单 · <b>${esc(e.dev)}</b>`; s.ok = null; }
-      if (e.op === "wo_field") s.modal = (s.modal || "新建工单") + ` · ${esc(e.field)}：<b>${esc(e.value)}</b>`;
-      if (e.op === "wo") { s.wos.push(e); s.modal = null; }
-      if (e.op === "rc_open") s.modal = `批量下发配方 · ${esc(e.ids.join("、"))}`;
-      if (e.op === "rc_field") s.modal = (s.modal || "批量下发配方") + ` · 版本：<b>${esc(e.value)}</b>`;
-      if (e.op === "await_confirm") { s.modal = null; s.cf = { ver: e.ver, ids: e.ids }; }
-      if (e.op === "confirmed") { s.cf = null; s.chg = e.ids; s.rows = (s.rows || []).map((r) => (e.ids.includes(r[0]) ? [r[0], r[1], r[2], e.ver] : r)); s.sel = []; s.ok = `已下发 ${esc(e.ver)} 到 ${esc(e.ids.join("、"))}`; }
-      return this.draw();
-    }
+  plan: {
+    steps: ["设备建模", "联网方式", "平台功能", "运维规则与分期"],
+    ex: [{ device: "社区智能充电桩" }, { device: "商用咖啡机" }, { device: "公寓智能门锁" }],
+    form: () => `<div class="row"><input id="fA" maxlength="40" placeholder="输入一种设备或门店场景" aria-label="设备或场景"><button class="btn primary" id="go" type="button">生成方案 →</button></div>`,
+    exLabel: (b) => b.device,
+    read: () => ({ device: $("#fA").value.trim() }),
+    fill: (b) => { $("#fA").value = b.device; },
+    ok: (b) => !!b.device,
+    label: (b) => b.device
   }
 };
+const T = { cur: "intel", gen: 0, busy: false, liveOK: false, t0: 0, timer: 0 };
+const resultEl = $("#result"), stepsEl = $("#steps"), tryBar = $("#tryBar");
 
-/* 渲染辅助 */
-const ICON = { in: "›", agent: "●", tool: "⚙", handoff: "⇄", "guard-pass": "✓", "guard-wait": "⏸", "guard-trip": "⛔", say: "✎", human: "✋", node: "◆", done: "■", page: "▦", err: "!" };
-const fmtT = (ms) => "+" + (ms / 1000).toFixed(1) + "s";
-function scrollEnd(el) { el.scrollTop = el.scrollHeight; }
-function addChat(node) { const e = $(".chat-empty", chat); if (e) e.remove(); chat.appendChild(node); scrollEnd(chat); return node; }
-function addTrace(kind, html) {
-  const row = mk("div", "tr tr-" + kind, `<span class="tt">${fmtT(LAB.t)}</span><span class="ti">${ICON[kind] || "·"}</span><div class="tb">${html}</div>`);
-  trace.appendChild(row); scrollEnd(trace);
-  $("#clock").textContent = fmtT(LAB.t);
-  const tk = $("#ticker span"); tk.textContent = row.querySelector(".tb").textContent.replace(/\s+/g, " ");
-  if (isMobile() && LAB.pane === "chat") { LAB.unseen++; const u = $("#unseen"); u.hidden = false; u.textContent = LAB.unseen; }
-  return row;
-}
-function setActive(id) {
-  $$(".rc", roster).forEach((r) => r.classList.toggle("on", r.dataset.id === id));
-  const r = $(`.rc[data-id="${id}"]`, roster); if (r) r.classList.add("used");
-  LAB.stats.agents.add(id);
-}
-async function fly(from, to, instant) {
-  const a = $(`.rc[data-id="${from}"]`, roster), b = $(`.rc[data-id="${to}"]`, roster);
-  if (instant || RM || !a || !b || !backVisible()) return;
-  const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
-  const x1 = ra.left + ra.width / 2, y1 = ra.top + ra.height / 2, x2 = rb.left + rb.width / 2, y2 = rb.top + rb.height / 2;
-  const dot = mk("div", "flyer"); dot.style.setProperty("--c", agentOf(to).c); document.body.appendChild(dot);
-  const anim = dot.animate([
-    { transform: `translate(${x1}px,${y1}px) scale(.6)`, opacity: 0 },
-    { transform: `translate(${(x1 + x2) / 2}px,${Math.min(y1, y2) - 34}px) scale(1.3)`, opacity: 1, offset: 0.5 },
-    { transform: `translate(${x2}px,${y2}px) scale(.8)`, opacity: 0.9 }
-  ], { duration: 650 / LAB.speed, easing: "cubic-bezier(.4,0,.2,1)" });
-  dot.style.left = "0px"; dot.style.top = "0px";
-  await anim.finished.catch(() => {});
-  dot.remove();
-  b.classList.remove("recv"); void b.offsetWidth; b.classList.add("recv");
-}
-function tripFx(instant) {
-  if (instant || RM) return;
-  backEl.classList.remove("trip"); void backEl.offsetWidth; backEl.classList.add("trip");
-  setTimeout(() => backEl.classList.remove("trip"), 950);
-  const bt = $("#backTab"); bt.classList.remove("alarm"); void bt.offsetWidth; bt.classList.add("alarm");
-}
-async function typeInto(node, text, instant, g) {
-  if (instant || RM) { node.textContent = text; return; }
-  const step = Math.max(1, Math.round(LAB.speed * (text.length > 160 ? 3 : 1)));
-  for (let i = 0; i < text.length; i += step) {
-    node.textContent = text.slice(0, i + step);
-    scrollEnd(chat);
-    await wait(22 / LAB.speed);
-    if (g !== LAB.gen) return;
-  }
-}
-function chartSVG(series, thr, unit) {
-  const W = 340, H = 140, pl = 30, pr = 32, pt = 14, pb = 22;
-  const all = [...series, thr], lo0 = Math.min(...all), hi0 = Math.max(...all), pad = (hi0 - lo0) * 0.12 || 1;
-  const lo = lo0 >= 0 && lo0 - pad < 0 ? 0 : lo0 - pad, hi = hi0 + pad;
-  const x = (i) => pl + (i * (W - pl - pr)) / (series.length - 1), y = (v) => H - pb - ((v - lo) / (hi - lo)) * (H - pt - pb);
-  const d = series.map((v, i) => (i ? "L" : "M") + x(i).toFixed(1) + "," + y(v).toFixed(1)).join(" ");
-  const area = d + ` L${x(series.length - 1)},${H - pb} L${x(0)},${H - pb} Z`;
-  const last = series.length - 1, ticks = [0, 1, 2, 3].map((k) => lo + ((hi - lo) * k) / 3);
-  const f = (v) => (Math.abs(hi - lo) < 10 ? v.toFixed(1) : Math.round(v));
-  const over = Math.abs(series[last]) > Math.abs(thr);
-  return `<svg class="chart" viewBox="0 0 ${W} ${H}">
-    <defs><linearGradient id="cg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#39ff88" stop-opacity=".28"/><stop offset="1" stop-color="#39ff88" stop-opacity="0"/></linearGradient></defs>
-    ${ticks.map((v) => `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="#11261a"/><text x="${pl - 6}" y="${y(v) + 3}" text-anchor="end">${f(v)}</text>`).join("")}
-    <line x1="${pl}" x2="${W - pr}" y1="${y(thr)}" y2="${y(thr)}" stroke="#ff6b6b" stroke-dasharray="4 3"/><text x="${W - pr + 2}" y="${y(thr) + 3}" style="fill:#ff6b6b">阈值</text>
-    <path class="ar" d="${area}" fill="url(#cg)" opacity="0"/>
-    <path class="ln" d="${d}" fill="none" stroke="#39ff88" stroke-width="2" stroke-linejoin="round"/>
-    <circle class="pt" cx="${x(last)}" cy="${y(series[last])}" r="4" fill="${over ? "#ff6b6b" : "#39ff88"}" opacity="0"><animate attributeName="r" values="4;7;4" dur="1.2s" repeatCount="indefinite"/></circle>
-    <text x="${x(last) - 4}" y="${y(series[last]) - 9}" text-anchor="end" style="fill:${over ? "#ff6b6b" : "#39ff88"};font-weight:700">${series[last]}${esc(unit)}</text>
-    <text x="${x(0)}" y="${H - 6}">${series.length} 天前</text><text x="${x(last)}" y="${H - 6}" text-anchor="end">今天</text>
-  </svg>`;
-}
-function briefHTML(e) {
-  const fn = (refs) => (refs || []).map((r) => { const it = e.refs[r]; return it ? `<a class="fref" href="${esc(it.url)}" target="_blank" rel="noopener" title="${esc(it.source + " · " + it.title)}">${esc(r)}</a>` : ""; }).join("");
-  const secs = e.sections.map((s) => `<h5>${esc(s.cat)}</h5><ul>${s.points.map((p) => `<li>${esc(p.text)}${fn(p.refs)}</li>`).join("")}</ul>`).join("");
-  const visit = e.visit && e.visit.length ? `<h5>拜访时可以问</h5><ol>${e.visit.map((v) => `<li class="vq">${esc(v.q)}${fn(v.refs)}<small>${esc(v.why)}</small></li>`).join("")}</ol>` : "";
-  const list = Object.entries(e.refs).sort((a, b) => +a[0] - +b[0]);
-  const refs = list.map(([n, it]) => `<div>[${esc(n)}] <a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.title)}</a> · ${esc(it.source)} · ${esc(it.date)}</div>`).join("");
-  return `<h4>客户简报 · ${esc(e.name)}</h4><p class="bsum">${esc(e.summary)}</p>${secs}${visit}<details class="refs"><summary>原文出处 ${list.length} 条</summary>${refs}</details>`;
-}
-function setCtx(kvs) {
-  for (const [k, v] of Object.entries(kvs)) {
-    const kv = $(`.kv[data-k="${k}"]`, ctxEl); if (!kv) continue;
-    $("b", kv).textContent = v;
-    kv.classList.remove("flash"); void kv.offsetWidth; kv.classList.add("flash");
-  }
-  return ctxEl;
-}
-const unitOf = (title) => { const m = String(title).match(/（([^，）]+)/); return m ? m[1].split("/")[0] : ""; };
+$("#atabs").innerHTML = KEYS.map((k) => `<button type="button" role="tab" class="atab" data-k="${k}" aria-selected="false"><span class="no">${AG[k].no}</span><b>${esc(AG[k].t)}</b><em>${esc(AG[k].tag)}</em></button>`).join("");
+$("#atabs").addEventListener("click", (e) => { const b = e.target.closest(".atab"); if (b && !T.busy) { history.replaceState(null, "", "#/agents/" + b.dataset.k); selectTool(b.dataset.k); } });
 
-/* 每类事件的执行 */
-async function apply(ev, instant) {
-  const g = LAB.gen;
-  // 时间：回放用录制时的真实时间；实时运行优先用服务端时间戳（不含页面播放间隔）
-  if (LAB.mode === "live") { if (ev.ts != null) { LAB.t = ev.ts; LAB.hasTs = true; } else if (!LAB.hasTs) LAB.t = Date.now() - LAB.t0; }
-  else if (ev.at != null) LAB.t = ev.at;
-  switch (ev.t) {
-    case "user": {
-      if (LAB.cur === "intel") setCtx({ 客户: ev.text });
-      const m = addChat(mk("div", "msg me", `<div class="bubble">${esc(ev.text)}</div>`));
-      addTrace("in", `用户输入：${esc(ev.text)}`);
-      return m;
-    }
-    case "sys": {
-      const m = addChat(mk("div", "alert", `<b>设备告警</b>${esc(ev.html)}`));
-      addTrace("in", "收到设备告警（MQTT 上报）");
-      return m;
-    }
-    case "agent": {
-      setActive(ev.a);
-      const a = agentOf(ev.a);
-      return addTrace("agent", `<b style="color:${a.c}">${esc(a.n)}</b> 开始处理`);
-    }
-    case "ctx": return setCtx(ev.kv);
-    case "guard": {
-      const p = $(`.gp[data-id="${ev.g}"]`, guardsEl), label = (S().guards.find((x) => x.id === ev.g) || { n: ev.g }).n;
-      if (p) { p.dataset.s = ev.s; $("em", p).textContent = { pass: "通过", trip: "拦截", wait: "待确认" }[ev.s]; }
-      LAB.stats.guards++;
-      const row = addTrace("guard-" + ev.s, `护栏「${esc(label)}」${{ pass: "通过", trip: "<b style='color:var(--red)'>拦截</b>", wait: "<b style='color:var(--amber)'>要求人工确认</b>" }[ev.s]}${ev.note ? " · " + esc(ev.note) : ""}`);
-      if (ev.s === "trip") {
-        LAB.stats.trips++;
-        tripFx(instant);
-        addChat(mk("div", "guardnote", `⛔ 护栏「${esc(label)}」拦截：${esc(ev.note)}`));
-      }
-      return backVisible() && p ? p : row;
-    }
-    case "handoff": {
-      const A1 = agentOf(ev.from), B1 = agentOf(ev.to);
-      addChat(mk("div", "handoff", `<span style="--c:${A1.c}">${esc(A1.n)}</span><i>→</i><span style="--c:${B1.c}">${esc(B1.n)}</span><em>${esc(ev.why)}</em>`));
-      const row = addTrace("handoff", `交接 <b style="color:${A1.c}">${esc(A1.n)}</b> → <b style="color:${B1.c}">${esc(B1.n)}</b>：${esc(ev.why)}`);
-      await fly(ev.from, ev.to, instant);
-      if (g !== LAB.gen) return;
-      setActive(ev.to);
-      return row;
-    }
-    case "tool": {
-      LAB.stats.tools++;
-      setActive(ev.a);
-      const a = agentOf(ev.a);
-      const row = addTrace("tool", `<span style="color:${a.c}">${esc(a.n)}</span> 调用 <b class="fn">${esc(ev.fn)}</b><code>${esc(ev.args)}</code><div class="res"><span class="spin"></span>运行中…</div>`);
-      const line = ev.chat ? addChat(mk("div", "toolline", `<span class="spin"></span>${esc(ev.chat)}…`)) : null;
-      if (ev.fn === "search_news") { try { SPECIAL.news.more(JSON.parse(ev.args).q); } catch {} }
-      if (ev.fn === "create_work_order") { const no = (String(ev.out).match(/WO-\d+/) || [])[0]; if (no) setCtx({ 工单: no }); }
-      if (LAB.mode !== "live") await nap(Math.max(300, Math.min(ev.ms || 0, 1200)), instant);
-      if (g !== LAB.gen) return;
-      const out = String(ev.out ?? "");
-      $(".res", row).innerHTML = `<span class="ok">✓</span>${esc(out.length > 96 ? out.slice(0, 96) + "…" : out)}${ev.ms > 0 ? `<em>${ev.ms}ms</em>` : ""}`;
-      if (line) { line.innerHTML = `<span class="ok">✓</span>${esc(ev.chat)}`; line.classList.add("done"); }
-      return row;
-    }
-    case "say": {
-      const a = agentOf(ev.a);
-      setActive(ev.a);
-      if (ev.think) {
-        const m = addChat(mk("div", "msg think", esc(ev.text)));
-        addTrace("agent", `<b style="color:${a.c}">${esc(a.n)}</b> 下一步：${esc(ev.text)}`);
-        return m;
-      }
-      const m = addChat(mk("div", "msg", `<div class="who" style="--c:${a.c}">${esc(a.n)}</div><div class="bubble"></div>`));
-      const bub = $(".bubble", m);
-      await typeInto(bub, ev.text, instant || LAB.mode === "live", g);
-      if (g !== LAB.gen) return;
-      addTrace("say", `<b style="color:${a.c}">${esc(a.n)}</b> 回复 · ${ev.text.length} 字`);
-      return m;
-    }
-    case "chart": {
-      const a = agentOf(ev.a);
-      const m = addChat(mk("div", "msg", `<div class="who" style="--c:${a.c}">${esc(a.n)}</div><div class="outcard"><h4>${esc(ev.title)}</h4>${chartSVG(ev.series, ev.thr, unitOf(ev.title))}</div>`));
-      const ln = $(".ln", m), ar = $(".ar", m), pt = $(".pt", m), L = ln.getTotalLength();
-      if (instant || RM) { ar.setAttribute("opacity", 1); pt.setAttribute("opacity", 1); }
-      else {
-        ln.style.strokeDasharray = L; ln.style.strokeDashoffset = L;
-        ln.getBoundingClientRect();
-        ln.style.transition = `stroke-dashoffset ${1.2 / LAB.speed}s cubic-bezier(.4,0,.2,1)`; ln.style.strokeDashoffset = 0;
-        ar.style.transition = `opacity .6s ${1 / LAB.speed}s`; ar.setAttribute("opacity", 1);
-        setTimeout(() => pt.setAttribute("opacity", 1), 1200 / LAB.speed);
-      }
-      addTrace("say", `<b style="color:${a.c}">${esc(a.n)}</b> 在对话里画出趋势图（${ev.series.length} 个点）`);
-      return m;
-    }
-    case "approve": {
-      LAB.stats.human++;
-      const live = LAB.mode === "live", items = ev.items || [ev.title];
-      const card = addChat(mk("div", "approve wait", `<h4>✋ 等待${esc(ev.who)}确认</h4>${items.length > 1 ? `<ol>${items.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : `<p>${esc(items[0])}</p>`}<p class="why">${esc(ev.why)}</p><div class="act"><button type="button" class="btn sm primary" data-ok>确认</button>${live ? '<button type="button" class="btn sm" data-no>驳回</button>' : ""}<small></small></div>`));
-      addTrace("human", `暂停，等待${esc(ev.who)}确认：${esc(items.join("；"))}`);
-      const finish = (how) => {
-        card.classList.remove("wait"); card.classList.add("ok");
-        $("h4", card).textContent = how === "no" ? `✋ ${ev.who}已驳回` : `✓ ${ev.who}已确认`;
-        $(".act", card).remove();
-        addTrace("human", how === "no" ? `${esc(ev.who)}驳回，Agent 改用其他方案` : `${esc(ev.who)}已确认，继续执行`);
-      };
-      if (instant) { finish("auto"); return card; }
-      const small = $(".act small", card);
-      const p = new Promise((res) => {
-        let n = 8, iv = 0;
-        if (!live) {
-          small.textContent = `${n} 秒后自动确认`;
-          iv = setInterval(() => {
-            if (g !== LAB.gen) { clearInterval(iv); return res("abort"); }
-            if (!LAB.playing) return;
-            n--; small.textContent = `${n} 秒后自动确认`;
-            if (n <= 0) { clearInterval(iv); res("auto"); }
-          }, 1000);
-        } else LAB.abortApprove = () => res("abort");
-        card.addEventListener("click", (e) => {
-          const b = e.target.closest("[data-ok],[data-no]"); if (!b) return;
-          clearInterval(iv); res(b.matches("[data-no]") ? "no" : "click");
-        });
-      });
-      LAB.approve = p;
-      const how = await p;
-      LAB.approve = null; LAB.abortApprove = null;
-      if (how === "abort" || g !== LAB.gen) return "abort";
-      finish(how);
-      return how;
-    }
-    case "fleet": return SPECIAL.fleet.set(ev.id, ev.s, ev.lab);
-    case "plan": {
-      SPECIAL.news.plan(ev); setCtx({ 检索词: `${ev.queries.length} 条` });
-      const a = agentOf(ev.a || "plan"); setActive(a.id);
-      const m = addChat(mk("div", "msg", `<div class="who" style="--c:${a.c}">${esc(a.n)}</div><div class="outcard"><h4>检索词 · ${ev.queries.length} 条</h4><div class="chipq">${ev.queries.map((q) => `<span>${esc(q)}</span>`).join("")}</div></div>`));
-      addTrace("tool", `<span style="color:${a.c}">${esc(a.n)}</span> 规划 ${ev.queries.length} 条检索词${ev.ms ? `<div class="res"><em>${ev.ms}ms</em></div>` : ""}`);
-      return m;
-    }
-    case "news": {
-      const box = SPECIAL.news.list(ev); setCtx({ 报道: `${ev.items.length} 条` });
-      addChat(mk("div", "toolline done", `<span class="ok">✓</span>${ev.items.length} 条报道进入归类`));
-      addTrace("tool", `检索结果：${ev.items.length} 条报道进入归类`);
-      return backVisible() ? box : null;
-    }
-    case "classify": {
-      const box = SPECIAL.news.labels(ev);
-      const c = {}; ev.labels.forEach((l) => (c[l.cat] = (c[l.cat] || 0) + 1));
-      const txt = Object.entries(c).map(([k, v]) => `${k} ${v}`).join(" · ");
-      setActive("write");
-      addChat(mk("div", "toolline done", `<span class="ok">✓</span>归类：${esc(txt)}`));
-      addTrace("tool", `<span style="color:${agentOf("write").c}">${esc(agentOf("write").n)}</span> 归类 ${ev.labels.length} 条：${esc(txt)}${ev.ms ? `<div class="res"><em>${ev.ms}ms</em></div>` : ""}`);
-      if (!instant) await nap(500, false);
-      return backVisible() ? box : null;
-    }
-    case "brief": {
-      const a = agentOf("write"); setActive("write");
-      const m = addChat(mk("div", "msg", `<div class="who" style="--c:${a.c}">${esc(a.n)}</div><div class="outcard">${briefHTML(ev)}</div>`));
-      const n = ev.sections.reduce((s, x) => s + x.points.length, 0);
-      setCtx({ 结论: `${n} 条` });
-      addTrace("say", `<b style="color:${a.c}">${esc(a.n)}</b> 输出客户简报 · ${n} 条结论 · ${(ev.visit || []).length} 个拜访问题 · ${Object.keys(ev.refs).length} 个出处`);
-      return m;
-    }
-    case "page": {
-      const box = SPECIAL.admin.page(ev);
-      const tx = ev.op === "query" ? `查询结果 ${ev.ids.length} 台：${esc(ev.ids.join("、"))}` : ev.op === "wo" ? `已建工单 ${esc(ev.no)}（${esc(ev.dev)}，${esc(ev.pri)}优先级，${esc(ev.who)}）` : ev.op === "await_confirm" ? "弹出确认框，确认按钮只有人能点" : ev.op === "confirmed" ? `店长点了确认，配方 ${esc(ev.ver)} 已下发` : "";
-      if (tx) addTrace(ev.op === "await_confirm" ? "guard-wait" : "page", `页面：${tx}`);
-      return backVisible() ? box : null;
-    }
-    case "error": {
-      const m = addChat(mk("div", "guardnote", `出错：${esc(ev.text)}`));
-      addTrace("err", `出错：${esc(ev.text)}`);
-      return m;
-    }
-    case "done": {
-      const st = LAB.stats;
-      const row = addTrace("done", `结束 · ${st.agents.size} 个 Agent · ${st.tools} 次工具调用 · ${st.human} 次人工确认 · 护栏检查 ${st.guards} 次（拦截 ${st.trips}）`);
-      const sm = $("#summary");
-      sm.hidden = false;
-      sm.className = "summary";
-      sm.innerHTML = `<span>Agent <b>${st.agents.size}</b></span><span>工具调用 <b>${st.tools}</b></span><span>人工确认 <b>${st.human}</b></span><span>护栏检查 <b>${st.guards}</b> · 拦截 <b>${st.trips}</b></span><span>用时 <b>${(LAB.t / 1000).toFixed(1)}s</b></span>`;
-      addChat(mk("div", "endline", LAB.mode === "main" ? "— 结束 · 可以切到「越界请求」看护栏 —" : LAB.mode === "edge" ? "— 结束 · 点「正常流程」看完整处理 —" : "— 结束 —"));
-      $$(".rc", roster).forEach((r) => r.classList.remove("on"));
-      return sm;
-    }
-  }
+/* ---------- 结果渲染 ---------- */
+const lvCls = (l) => (l === "高" ? "hi" : l === "中" ? "md" : "lo");
+function intelHTML(b) {
+  const fn = (refs) => (refs || []).map((r) => { const it = b.refs[r]; return it ? `<a class="fref" href="${esc(it.url)}" target="_blank" rel="noopener" title="${esc(it.source + " · " + it.title)}">${esc(r)}</a>` : ""; }).join("");
+  const refs = Object.entries(b.refs).sort((x, y) => +x[0] - +y[0]);
+  return `<p class="sum">${esc(b.summary)}</p>
+    <div class="grid2">${b.sections.map((s) => `<div class="blk"><h4>${esc(s.cat)}</h4><ul class="dots">${s.points.map((p) => `<li>${esc(p.text)}${fn(p.refs)}</li>`).join("")}</ul></div>`).join("")}</div>
+    ${b.visit?.length ? `<h4>拜访时可以聊</h4><ol class="nums">${b.visit.map((v) => `<li><b>${esc(v.q)}</b>${fn(v.refs)}<small>${esc(v.why)}</small></li>`).join("")}</ol>` : ""}
+    <details class="srcs"><summary>原文出处 ${refs.length} 条</summary>${refs.map(([n, it]) => `<div>[${esc(n)}] <a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.title)}</a> · ${esc(it.source)} · ${esc(it.date)}</div>`).join("")}</details>`;
+}
+function diagHTML(r) {
+  const t = r.ticket || {};
+  return `<p class="sum">${esc(r.summary)}</p>
+    <h4>可能原因</h4><div class="causes">${r.causes.map((c, i) => `<div class="cause"><span class="lv ${lvCls(c.level)}">${esc(c.level)}</span><div><b>${i + 1}. ${esc(c.cause)}</b><p>${esc(c.why)}</p><p class="chk">怎么确认：${esc(c.check)}</p></div></div>`).join("")}</div>
+    <div class="grid2"><div class="blk"><h4>先做这几步</h4><ol class="nums">${r.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol><p class="onsite"><b>需要上门：</b>${esc(r.onsite)}</p></div>
+    <div class="blk ticket"><h4>维修工单</h4><dl><dt>标题</dt><dd>${esc(t.title || "")}</dd><dt>优先级</dt><dd><span class="lv ${lvCls(t.priority)}">${esc(t.priority || "")}</span></dd><dt>备件</dt><dd class="chips">${(t.parts || []).map((p) => `<span>${esc(p)}</span>`).join("")}</dd><dt>技能</dt><dd>${esc(t.skill || "")}</dd><dt>工时</dt><dd>${esc(t.hours || "")}</dd></dl></div></div>`;
+}
+function planModelHTML(m) {
+  const n = m.network || {};
+  return `<p class="sum">${esc(m.summary)}</p>
+    <h4>物模型 · 属性 ${m.properties.length} 个</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>属性</th><th>标识</th><th>类型</th><th>单位</th><th>用途</th></tr></thead><tbody>${m.properties.map((p) => `<tr><td>${esc(p.name)}</td><td class="mono">${esc(p.id)}</td><td class="mono">${esc(p.type)}</td><td>${esc(p.unit || "—")}</td><td>${esc(p.note)}</td></tr>`).join("")}</tbody></table></div>
+    <div class="grid2"><div class="blk"><h4>事件 ${m.events.length} 个</h4><ul class="dots">${m.events.map((e) => `<li><b>${esc(e.name)}</b><span class="tag ${e.level === "故障" ? "hi" : e.level === "告警" ? "md" : "lo"}">${esc(e.level)}</span><small>${esc(e.note)}</small></li>`).join("")}</ul></div>
+    <div class="blk"><h4>远程服务 ${m.services.length} 个</h4><ul class="dots">${m.services.map((s) => `<li><b>${esc(s.name)}</b><small>${esc(s.note)}</small></li>`).join("")}</ul></div></div>
+    <h4>联网方式</h4><dl class="kv2"><dt>联网</dt><dd>${esc(n.connect || "")}</dd><dt>协议</dt><dd>${esc(n.protocol || "")}</dd><dt>固件升级</dt><dd>${esc(n.ota || "")}</dd></dl>`;
+}
+function planOpsHTML(o) {
+  return `<h4>平台功能 · ${o.modules.length} 个模块</h4><div class="mods">${o.modules.map((m) => `<div class="mod"><em>${esc(m.side)}</em><b>${esc(m.name)}</b><ul>${m.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
+    <h4>自动规则</h4><div class="rules">${o.rules.map((r) => `<div class="rule"><span>${esc(r.when)}</span><i>→</i><span>${esc(r.then)}</span></div>`).join("")}</div>
+    <div class="grid2"><div class="blk"><h4>AI 应用点</h4><ul class="dots">${o.ai.map((a) => `<li><b>${esc(a.name)}</b><small>${esc(a.value)}</small></li>`).join("")}</ul></div>
+    <div class="blk"><h4>分期计划</h4><div class="phases">${o.phases.map((p) => `<div class="ph"><b>${esc(p.phase)}<em>${esc(p.weeks)}</em></b><p>${esc(p.scope)}</p></div>`).join("")}</div></div></div>`;
+}
+function resultShell(label, note) {
+  resultEl.innerHTML = `<div class="res-h"><span class="who">${esc(label)}</span><span class="note" id="resNote">${esc(note)}</span><button class="btn sm" type="button" id="copyBtn">复制结果</button></div><div class="res-b" id="resBody"></div>`;
+  $("#copyBtn").onclick = () => { navigator.clipboard?.writeText($("#resBody").innerText).then(() => { $("#copyBtn").textContent = "已复制"; setTimeout(() => ($("#copyBtn").textContent = "复制结果"), 1500); }); };
+  return $("#resBody");
+}
+function showExample(k) {
+  const ex = window.EXAMPLES[k], tool = TOOLS[k];
+  const body = resultShell(tool.label(ex.input), "示例结果");
+  if (k === "intel") body.innerHTML = intelHTML(ex.brief);
+  if (k === "diag") body.innerHTML = diagHTML(ex.result);
+  if (k === "plan") body.innerHTML = planModelHTML(ex.model) + planOpsHTML(ex.ops);
+  setSteps(k, "done");
 }
 
-/* 试用栏：接口可用时显示，任何时候都能直接输入、现场运行 */
-const TRY_INTEL = ["蜜雪冰城", "瑞幸咖啡", "喜茶"];
-const TRY_CONSOLE = ["给静安店在线设备下发配方 v1.4", "徐汇店离线设备都建高优先级工单，派给王工", "把所有工单都删掉"];
-function renderTry() {
-  const k = LAB.cur;
-  tryBar.hidden = !LAB.liveOK;
-  if (!LAB.liveOK) return;
-  if (k === "intel") tryBar.innerHTML = `<div class="row"><input id="liveText" maxlength="20" placeholder="输入公司名，例如你所在的公司" aria-label="公司名"><button class="btn primary" id="liveGo" type="button">生成简报 →</button></div><div class="sug">试试：${TRY_INTEL.map((x) => `<button type="button" data-q="${x}">${x}</button>`).join("")}</div>`;
-  if (k === "ops") tryBar.innerHTML = `<div class="sug devs">选一台设备：${FLEET.map(([id, store, st, lab]) => `<button type="button" class="${st}" data-dev="${id}">${id} · ${store} · ${lab}</button>`).join("")}</div><div class="row"><input id="liveText" maxlength="200" placeholder="或者直接说，例如：T2-031 出液好像不对" aria-label="描述设备问题"><button class="btn primary" id="liveGo" type="button">发送 →</button></div>`;
-  if (k === "console") tryBar.innerHTML = `<div class="sug">在模拟后台里试：${TRY_CONSOLE.map((x) => `<a href="console.html?task=${encodeURIComponent(x)}">${x}</a>`).join("")}</div><div class="row"><a class="btn primary" href="console.html">打开模拟后台，自己下指令 →</a></div>`;
-  const go = (v) => { v = (v ?? $("#liveText")?.value ?? "").trim(); if (v) liveRun(k === "ops" ? { text: v } : { name: v }); };
-  $$("[data-dev]", tryBar).forEach((b) => (b.onclick = () => liveRun({ device_id: b.dataset.dev })));
-  $$("[data-q]", tryBar).forEach((b) => (b.onclick = () => { $("#liveText").value = b.dataset.q; go(b.dataset.q); }));
-  if ($("#liveGo")) $("#liveGo").onclick = () => go();
-  if ($("#liveText")) $("#liveText").onkeydown = (e) => { if (e.key === "Enter" && !e.isComposing) go(); };
+/* ---------- 进度条（业务步骤） ---------- */
+function setSteps(k, state, upto = -1) {
+  const st = TOOLS[k].steps;
+  stepsEl.style.setProperty("--n", st.length);
+  stepsEl.className = "flow steps" + (state === "busy" ? " busy" : "");
+  stepsEl.innerHTML = st.map((s, j) => (j ? `<span class="flink" style="--i:${j - 1}"></span>` : "") + `<span class="fnode ${state === "done" || j <= upto ? "done" : ""}" style="--i:${j}">${s}</span>`).join("");
 }
-const lockIn = (on) => $$("button, input", tryBar).forEach((x) => (x.disabled = on));
+function stepOn(upto) { $$(".fnode", stepsEl).forEach((n, j) => n.classList.toggle("done", j <= upto)); }
+function startTimer() { T.t0 = Date.now(); clearInterval(T.timer); T.timer = setInterval(() => ($("#timer").textContent = ((Date.now() - T.t0) / 1000).toFixed(1) + " 秒"), 100); }
+function stopTimer() { clearInterval(T.timer); }
 
-/* 播放控制 */
-function setup(k, mode) {
-  LAB.gen++; LAB.loop++;
-  if (LAB.abortApprove) LAB.abortApprove();
-  LAB.cur = k; LAB.mode = mode; LAB.idx = 0; LAB.t = 0; LAB.hasTs = false; LAB.playing = false; LAB.approve = null;
-  LAB.stats = { tools: 0, agents: new Set(), human: 0, guards: 0, trips: 0 };
-  const s = S(), a = AG[k];
+/* ---------- 切换工具 ---------- */
+function selectTool(k) {
+  T.cur = k; T.gen++;
+  const a = AG[k], tool = TOOLS[k];
   $$(".atab").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.k === k)));
-  $$("#matrix tbody tr").forEach((r) => r.classList.toggle("cur", r.dataset.k === k));
-  $$(".modes [data-m]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.m === mode)));
-  $("#nowDesc").innerHTML = `<b>${esc(a.t)}</b> — ${esc(a.res)}`;
-  $("#chatTitle").textContent = "· " + a.t + (mode === "edge" ? " · 越界请求" : mode === "live" ? " · 实时运行" : "");
-  $("#srcLbl").textContent = mode === "live" ? "实时运行 · DeepSeek" : "示例回放";
-  const empty = mode === "main" ? "点「▶ 播放」看示例" : mode === "edge" ? "点「▶ 播放」，看 Agent 怎么处理越界请求" : "运行中…";
-  chat.innerHTML = `<div class="chat-empty">${empty}</div>`;
-  trace.innerHTML = "";
-  roster.innerHTML = s.roster.map((r) => `<div class="rc" data-id="${r.id}" style="--c:${r.c}" title="${esc(r.r)}"><i></i><span>${esc(r.n)}</span></div>`).join("");
-  guardsEl.innerHTML = s.guards.map((x) => `<div class="gp" data-id="${x.id}" data-s="idle"><i></i>${esc(x.n)}<em>待检</em></div>`).join("");
-  ctxEl.innerHTML = s.ctx.map((c) => `<div class="kv" data-k="${c}"><span>${c}</span><b>—</b></div>`).join("");
-  SPECIAL[s.special].init(special);
-  $("#summary").hidden = true;
-  $("#clock").textContent = "+0.0s";
-  $("#ticker span").textContent = "等待开始";
-  LAB.unseen = 0; $("#unseen").hidden = true;
-  buildScrub();
-  if (tryBar.dataset.k !== k) { tryBar.dataset.k = k; renderTry(); }
-  updCtl();
+  $("#tName").textContent = a.t;
+  $("#tRes").textContent = a.res;
+  $("#tFacts").innerHTML = [["适合", a.who], ["解决", a.problem], ["得到", a.get]].map(([h, v]) => `<div><span>${h}</span><p>${esc(v)}</p></div>`).join("");
+  tryBar.innerHTML = tool.form() + `<div class="sug">试试：${tool.ex.map((b) => `<button type="button" data-v="${attrJ(b)}">${esc(tool.exLabel(b))}</button>`).join("")}</div>`;
+  $$("[data-v]", tryBar).forEach((b) => (b.onclick = () => { const v = JSON.parse(b.dataset.v); tool.fill(v); run(k, v); }));
+  $("#go").onclick = () => run(k, tool.read());
+  $$("input", tryBar).forEach((i) => (i.onkeydown = (e) => { if (e.key === "Enter" && !e.isComposing) run(k, tool.read()); }));
+  lock(!T.liveOK);
+  $("#offNote").hidden = T.liveOK || T.liveOK === null;
+  $("#timer").textContent = "";
+  showExample(k);
 }
-function buildScrub() {
-  const sc = $("#scrub"), list = EV(), n = list.length;
-  $$(".mk", sc).forEach((x) => x.remove());
-  sc.hidden = !n;
-  list.forEach((ev, i) => {
-    if (!ev.cap) return;
-    const c = CAPS.find((x) => x.id === ev.cap);
-    const b = mk("button", "mk"); b.type = "button"; b.dataset.i = i; b.dataset.l = c.n; b.setAttribute("aria-label", "跳到：" + c.n);
-    b.style.left = ((i + 0.5) / n) * 100 + "%";
-    sc.appendChild(b);
-  });
-  updScrub();
-}
-function updScrub() {
-  const n = EV().length;
-  $("#scrubFill").style.width = (n ? (LAB.idx / n) * 100 : 0) + "%";
-  $$("#scrub .mk").forEach((b) => b.classList.toggle("done", +b.dataset.i < LAB.idx));
-}
-function updCtl() {
-  const live = LAB.mode === "live", done = !live && LAB.idx >= EV().length;
-  const pb = $("#playBtn"), rb = $("#restartBtn");
-  pb.disabled = rb.disabled = live;
-  pb.textContent = live ? "▶ 播放" : LAB.playing ? "⏸ 暂停" : done ? "↺ 再看一遍" : LAB.idx ? "▶ 继续" : "▶ 播放";
-  const st = $("#state");
-  st.classList.toggle("on", LAB.playing);
-  $("span", st).textContent = live ? (LAB.playing ? "运行中" : "等待输入") : LAB.playing ? "回放中" : done ? "已结束" : LAB.idx ? "已暂停" : "待播放";
-}
-async function play() {
-  if (LAB.mode === "live") return;
-  if (LAB.idx >= EV().length) setup(LAB.cur, LAB.mode);
-  const my = ++LAB.loop;
-  LAB.playing = true; updCtl();
-  if (LAB.approve) { await LAB.approve; if (my !== LAB.loop) return; await wait(300 / LAB.speed); }
-  while (my === LAB.loop && LAB.idx < EV().length) {
-    const ev = EV()[LAB.idx++];
-    const g = LAB.gen;
-    await apply(ev, false);
-    if (g !== LAB.gen) return;
-    updScrub();
-    if (my !== LAB.loop) { updCtl(); return; }
-    await wait((ev.d ?? 650) / LAB.speed);
-  }
-  if (my === LAB.loop) { LAB.playing = false; updCtl(); }
-}
-function pause() { if (LAB.mode === "live") return; LAB.loop++; LAB.playing = false; updCtl(); }
-function flash(el) {
-  if (!el || !el.classList) return;
-  const box = el.closest(".chat,.trace");
-  if (box) box.scrollTop = Math.max(0, el.offsetTop - box.clientHeight / 2);
-  el.classList.remove("hl"); void el.offsetWidth; el.classList.add("hl");
-}
-async function seekTo(k, mode, idx) {
-  setup(k, mode);
-  const g = LAB.gen, list = EV();
-  for (let i = 0; i < idx; i++) { await apply(list[i], true); if (g !== LAB.gen) return; }
-  LAB.idx = idx + 1;
-  const my = ++LAB.loop; LAB.playing = true; updCtl(); updScrub();
-  const el = await apply(list[idx], false);
-  if (g !== LAB.gen) return;
-  if (my === LAB.loop) { LAB.playing = false; updCtl(); }
-  flash(typeof el === "object" ? el : null);
-}
-function seekCap(k, mode, cap) {
-  const idx = RP[k][mode].findIndex((e) => e.cap === cap);
-  if (idx < 0) return;
-  scrollToBench();
-  const capInfo = CAPS.find((c) => c.id === cap);
-  if (isMobile()) setPane(["guard", "handoff", "tool", "rag", "gui", "trace"].includes(cap) ? "back" : "chat");
-  seekTo(k, mode, idx).then(() => { $("#ticker span").textContent = "已跳到：" + capInfo.n; });
-}
-function scrollToBench() {
-  const top = bench.getBoundingClientRect().top + scrollY - (isMobile() ? 62 : 150);
-  scrollTo({ top, behavior: RM ? "auto" : "smooth" });
-}
-function setPane(p) {
-  LAB.pane = p;
-  bench.dataset.pane = p;
-  $$(".mtabs button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.p === p)));
-  if (p === "back") { LAB.unseen = 0; $("#unseen").hidden = true; scrollEnd(trace); } else scrollEnd(chat);
-}
+const lock = (on) => $$("button, input", tryBar).forEach((x) => (x.disabled = on));
 
-/* 实时运行：调用本站接口（密钥只在服务端） */
+/* ---------- 运行 ---------- */
 const post = (path, body) => fetch(API + path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
 const asJSON = (r) => r.json().catch(() => ({ error: "服务返回异常（HTTP " + r.status + "）" }));
-async function liveRun(body) {
-  const k = LAB.cur;
-  setup(k, "live");
-  const g = LAB.gen;
-  LAB.playing = true; LAB.t0 = Date.now(); updCtl(); lockIn(true);
-  scrollToBench();
+async function readStream(resp, g, onEv) {
+  const rd = resp.body.getReader(), dec = new TextDecoder(); let buf = "";
+  for (;;) {
+    const { done, value } = await rd.read(); if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i;
+    while ((i = buf.indexOf("\n")) >= 0) { const l = buf.slice(0, i); buf = buf.slice(i + 1); if (l.trim() && g === T.gen) onEv(JSON.parse(l)); }
+  }
+}
+async function run(k, body) {
+  const tool = TOOLS[k];
+  if (T.busy || !T.liveOK || !tool.ok(body)) { if (!tool.ok(body)) $("#fA").focus(); return; }
+  const g = ++T.gen; T.busy = true; lock(true);
+  setSteps(k, "busy"); startTimer();
+  const out = resultShell(tool.label(body), "生成中…");
+  out.innerHTML = `<p class="wait"><span class="spin"></span>正在生成</p>`;
+  $(".steps-row").scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "start" });
+  const fail = (msg) => { out.innerHTML = `<p class="err">${esc(msg)}</p>`; };
+  let finished = false;
   try {
-    if (k === "ops") {
-      let r = await asJSON(await post("/api/ops", body));
-      for (;;) {
-        if (g !== LAB.gen) return;
-        if (r.error) { await apply({ t: "error", text: r.error }); break; }
-        for (const e of r.events.filter((x) => x.t !== "approve")) { if (g !== LAB.gen) return; await apply(e, false); await wait(Math.min(e.t === "tool" ? 260 : 380, 400)); }
-        if (r.done) break;
-        const items = r.events.filter((x) => x.t === "approve");
-        const how = await apply({ t: "approve", items: items.map((x) => x.title), why: items[0].why, who: items[0].who || "店长" }, false);
-        if (how === "abort" || g !== LAB.gen) return;
-        r = await asJSON(await post("/api/ops", { state: r.state, decisions: Object.fromEntries(items.map((a) => [a.id, how === "click"])) }));
-      }
-    } else if (k === "intel") {
-      const resp = await post("/api/intel", body);
-      if (!resp.ok) { const j = await asJSON(resp); await apply({ t: "error", text: j.error || "HTTP " + resp.status }); }
+    if (k === "diag") {
+      stepOn(0);
+      const r = await asJSON(await post("/api/diag", body));
+      if (g !== T.gen) return;
+      if (r.error) fail(r.error); else if (!r.ok) fail(r.reply); else { out.innerHTML = diagHTML(r.result); finished = true; }
+    } else {
+      const resp = await post(k === "intel" ? "/api/intel" : "/api/plan", body);
+      if (!resp.ok) { const j = await asJSON(resp); fail(j.error || "HTTP " + resp.status); }
       else {
-        const rd = resp.body.getReader(), dec = new TextDecoder(); let buf = "";
-        for (;;) {
-          const { done, value } = await rd.read(); if (done) break;
-          buf += dec.decode(value, { stream: true });
-          let i;
-          while ((i = buf.indexOf("\n")) >= 0) { const l = buf.slice(0, i); buf = buf.slice(i + 1); if (l.trim() && g === LAB.gen) await apply(JSON.parse(l), false); }
-        }
+        let said = "", newsN = 0;
+        await readStream(resp, g, (e) => {
+          if (k === "intel") {
+            if (e.t === "plan" || e.fn === "search_news") stepOn(0);
+            if (e.fn === "dedupe" || e.fn === "filter_subject") stepOn(1);
+            if (e.t === "news") { newsN = e.items.filter((x) => !x.masked).length; stepOn(1); $("#resNote").textContent = `找到 ${newsN} 条相关报道，正在归类…`; }
+            if (e.t === "classify") stepOn(2);
+            if (e.t === "say") said = e.text;
+            if (e.t === "brief") { stepOn(3); out.innerHTML = intelHTML(e); finished = true; }
+          } else {
+            if (e.t === "start") stepOn(0);
+            if (e.t === "refuse") said = e.text;
+            if (e.t === "part" && e.k === "model") { stepOn(1); out.innerHTML = planModelHTML(e.data) + `<p class="wait"><span class="spin"></span>正在生成平台功能和分期计划</p>`; }
+            if (e.t === "part" && e.k === "ops") { stepOn(3); $(".wait", out)?.remove(); out.insertAdjacentHTML("beforeend", planOpsHTML(e.data)); finished = true; }
+          }
+          if (e.t === "error") said = e.text;
+        });
+        if (g !== T.gen) return;
+        if (!finished) fail(said || "这次没有生成结果，换个说法再试一次。");
       }
     }
-  } catch (err) { if (g === LAB.gen) await apply({ t: "error", text: "网络出错，请稍后再试" }); }
-  if (g !== LAB.gen) return;
-  LAB.playing = false; updCtl(); lockIn(false);
+  } catch { if (g === T.gen) fail("网络出错，请稍后再试。"); }
+  if (g !== T.gen) return;
+  stopTimer();
+  setSteps(k, finished ? "done" : "idle");
+  $("#resNote").textContent = finished ? `已生成 · ${((Date.now() - T.t0) / 1000).toFixed(1)} 秒` : "";
+  T.busy = false; lock(false);
 }
-// api 为 null：这个部署没有接口（只有回放），不去探测
-if (!(window.SITE && window.SITE.api === null)) fetch(API + "/api/health").then((r) => r.json()).then((h) => {
-  if (!h.live) return;
-  LAB.liveOK = true;
-  renderTry();
-}).catch(() => {});
 
-$("#playBtn").addEventListener("click", () => (LAB.playing ? pause() : play()));
-$("#restartBtn").addEventListener("click", () => { setup(LAB.cur, LAB.mode); play(); });
-$$(".seg button").forEach((b) => b.addEventListener("click", () => { LAB.speed = +b.dataset.sp; $$(".seg button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); }));
-$$(".modes [data-m]").forEach((b) => b.addEventListener("click", () => { setup(LAB.cur, b.dataset.m); play(); }));
-$$(".mtabs button").forEach((b) => b.addEventListener("click", () => setPane(b.dataset.p)));
-$("#scrub").addEventListener("click", (e) => { const m = e.target.closest(".mk"); if (m) seekTo(LAB.cur, LAB.mode, +m.dataset.i); });
+// 接口可用才能在线使用；api 为 null 表示这个部署只有示例
+T.liveOK = null;
+if (window.SITE && window.SITE.api === null) T.liveOK = false;
+else fetch(API + "/api/health").then((r) => r.json()).then((h) => { T.liveOK = !!h.live; }).catch(() => { T.liveOK = false; }).finally(() => { if (!T.busy) { lock(!T.liveOK); $("#offNote").hidden = T.liveOK; } });
 
-/* 进入实验室时，工作台出现在屏幕上才开始自动播放 */
-const benchIO = new IntersectionObserver((en) => {
-  if (en[0].isIntersecting && LAB.auto && !LAB.playing && LAB.idx === 0 && LAB.mode !== "live") { LAB.auto = false; play(); }
-}, { threshold: 0.12 });
-benchIO.observe(bench);
 
 /* ═════════════ 路由 ═════════════ */
 function route() {
@@ -1429,11 +1134,8 @@ function route() {
     Net.off();
     const k = h.split("/")[2];
     scrollTo(0, 0);
-    setup(RP[k] ? k : LAB.cur, "main");
-    LAB.auto = !RM;
-    if (k) setTimeout(scrollToBench, 50);
+    if (!T.busy) selectTool(TOOLS[k] ? k : T.cur);
   } else {
-    pause();
     Net.on();
     const id = h.slice(1);
     if (id && id !== "/" && document.getElementById(id)) requestAnimationFrame(() => document.getElementById(id).scrollIntoView());

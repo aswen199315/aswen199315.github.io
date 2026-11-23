@@ -3,5 +3,4 @@
 在线简历：https://aswen199315.github.io/
 
 - 首页：项目、工作经历、技能
-- Agent 实验室：客户情报、后台操作、门店设备运维 3 个 Agent 的运行回放
-- `vendor/page-agent/`：阿里开源 page-agent（MIT，见其中 LICENSE）
+- AI 工具：客户情报、设备故障诊断、IoT 产品方案，可在线使用
