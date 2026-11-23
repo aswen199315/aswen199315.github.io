@@ -429,6 +429,19 @@ a.fref{text-decoration:none}
 .chat-in .devs button[disabled]{opacity:.45;cursor:not-allowed}
 .chat-in .btn.primary{flex:none}
 
+/* ── 试用栏 ── */
+.try{margin-top:12px;padding:14px 16px;display:grid;gap:10px;border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft),0 10px 40px -24px var(--accent)}
+.try .row{display:flex;gap:10px;flex-wrap:wrap}
+.try input{flex:1;min-width:200px;min-height:46px;background:#030604;border:1px solid var(--line-2);border-radius:10px;padding:0 14px;font-size:16px;color:var(--text)}
+.try input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.try .btn.primary{min-height:46px;padding:0 20px;font-size:15px}
+.try .sug{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--text-3)}
+.try .sug button,.try .sug a{font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text-2);transition:border-color .2s,color .2s}
+.try .sug button:hover:not([disabled]),.try .sug a:hover{border-color:var(--accent);color:var(--accent)}
+.try .devs button{font-family:var(--font-mono);font-size:12px}
+.try .devs button.alarm::before{content:"● ";color:var(--red)}
+.try [disabled]{opacity:.45;cursor:not-allowed}
+
 /* ── 响应式 ── */
 @media (max-width:980px){
   .hero-grid{grid-template-columns:1fr}
@@ -549,14 +562,10 @@ a.fref{text-decoration:none}
     <h1>Agent 实验室 · <span>3 个 Agent</span></h1>
   </section>
 
-  <section class="shell lab-sec">
-    <div class="sub-h"><h2>能力地图</h2><small>点绿点跳到对应步骤</small></div>
-    <div class="card matrix-wrap"><table class="matrix" id="matrix"></table></div>
-  </section>
-
   <section class="shell lab-sec" id="benchSec">
     <div class="atabs" role="tablist" id="atabs"></div>
     <div class="now" id="nowDesc"></div>
+    <div class="try card glow" id="tryBar" hidden></div>
     <div class="ctl">
       <span class="state" id="state"><i></i><span>待播放</span></span>
       <button class="btn sm primary" id="playBtn" type="button">▶ 播放</button>
@@ -564,9 +573,8 @@ a.fref{text-decoration:none}
       <div class="seg" role="group" aria-label="播放速度"><button type="button" data-sp="1" aria-pressed="true">1×</button><button type="button" data-sp="2" aria-pressed="false">2×</button><button type="button" data-sp="4" aria-pressed="false">4×</button></div>
       <span class="grow"></span>
       <div class="modes" role="group" aria-label="运行方式">
-        <button type="button" data-m="main" aria-pressed="true">正常流程</button>
+        <button type="button" data-m="main" aria-pressed="true">示例回放</button>
         <button type="button" data-m="edge" aria-pressed="false">越界请求</button>
-        <button type="button" data-m="live" aria-pressed="false" hidden>实时运行</button>
       </div>
     </div>
     <div class="scrub" id="scrub" title="点圆点跳到对应步骤"><div class="bar"></div><div class="fill" id="scrubFill"></div></div>
@@ -580,7 +588,6 @@ a.fref{text-decoration:none}
         <div class="pane-h"><span class="dot"></span><b>用户视图</b><span id="chatTitle"></span><span class="r" id="srcLbl"></span></div>
         <div class="ticker" id="ticker"><b>幕后</b><span>等待开始</span></div>
         <div class="chat" id="chat" aria-live="polite"></div>
-        <div class="chat-in" id="chatIn"></div>
       </div>
       <div class="pane card back" id="back">
         <div class="pane-h"><span class="dot" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan)"></span><b>幕后</b><span>Agent 工作过程</span><span class="r" id="clock">+0.0s</span></div>
@@ -595,6 +602,11 @@ a.fref{text-decoration:none}
       </div>
     </div>
   </section>
+  <section class="shell lab-sec" style="padding-top:28px">
+    <div class="sub-h"><h2>能力地图</h2><small>点绿点跳到对应步骤</small></div>
+    <div class="card matrix-wrap"><table class="matrix" id="matrix"></table></div>
+  </section>
+
   <footer id="foot2"></footer>
 </main>
 
@@ -629,7 +641,7 @@ $("#lead").textContent = R.intro;
 $("#nums").innerHTML = R.numbers.map((n) => `<div class="num"><b><span data-to="${n.to}">0</span><small>${esc(n.unit)}</small></b><span>${esc(n.label)}</span></div>`).join("");
 $("#teasers").innerHTML = KEYS.map((k, i) => {
   const a = AG[k];
-  return `<a class="card teaser glow rv" style="--i:${i}" href="#/agents/${k}"><span class="no">AGENT ${a.no} · ${esc(a.stage)}</span><h3>${esc(a.t)}</h3><p>${esc(a.res)}</p><div class="mini" data-k="${k}"></div><span class="go">看运行过程 <i>→</i></span></a>`;
+  return `<a class="card teaser glow rv" style="--i:${i}" href="#/agents/${k}"><span class="no">AGENT ${a.no} · ${esc(a.stage)}</span><h3>${esc(a.t)}</h3><p>${esc(a.res)}</p><div class="mini" data-k="${k}"></div><span class="go">试用 <i>→</i></span></a>`;
 }).join("");
 $("#projList").innerHTML = R.projects.map((p, i) => `
   <article class="card proj glow rv" style="--i:${i % 2}">
@@ -637,7 +649,8 @@ $("#projList").innerHTML = R.projects.map((p, i) => `
     <div class="flow" style="--n:${p.flow.length}">${p.flow.map((f, j) => (j ? `<span class="flink" style="--i:${j - 1}"></span>` : "") + `<span class="fnode" style="--i:${j}">${esc(f)}</span>`).join("")}</div>
     <ul class="points">${p.points.map((x) => `<li>${leadB(x)}</li>`).join("")}</ul>
   </article>`).join("");
-$("#tl").insertAdjacentHTML("beforeend", R.experience.map((e) => `<div class="tli rv"><div class="t">${esc(e.time)}</div><h3>${esc(e.org)}<span>${esc(e.role)}</span></h3><p>${esc(e.d)}</p></div>`).join(""));
+$("#tl").insertAdjacentHTML("beforeend", R.experience.map((e) => `<div class="tli rv"><div class="t">${esc(e.time)}</div><h3>${esc(e.org)}<span>${esc(e.role)}</span></h3><p>${esc(e.d)}</p></div>`).join("")
+  + `<div class="tli rv"><div class="t">${esc(R.education.time)}</div><h3>${esc(R.education.school)}<span>${esc(R.education.degree)}</span></h3><p>${esc(R.education.major)}</p></div>`);
 const marqItems = R.skills.flatMap((s) => s.v);
 const marqHTML = marqItems.map((x, i) => `<span class="${i % 4 === 0 ? "hot" : ""}">${esc(x)}</span>`).join("");
 $("#marq").innerHTML = marqHTML + marqHTML;
@@ -865,7 +878,7 @@ const CAPS = [
   { id: "trace", n: "全程可追踪", d: "每步耗时" }
 ];
 const LAB = { cur: "intel", mode: "main", idx: 0, playing: false, speed: 1, loop: 0, gen: 0, t: 0, t0: 0, stats: null, approve: null, pane: "chat", unseen: 0, auto: false, liveOK: false };
-const chat = $("#chat"), trace = $("#trace"), roster = $("#roster"), guardsEl = $("#guards"), ctxEl = $("#ctx"), special = $("#special"), bench = $("#bench"), backEl = $("#back"), chatIn = $("#chatIn");
+const chat = $("#chat"), tryBar = $("#tryBar"), trace = $("#trace"), roster = $("#roster"), guardsEl = $("#guards"), ctxEl = $("#ctx"), special = $("#special"), bench = $("#bench"), backEl = $("#back");
 const S = () => RP[LAB.cur];
 const EV = () => (LAB.mode === "live" ? [] : S()[LAB.mode]);
 const agentOf = (id) => S().roster.find((r) => r.id === id) || { id, n: id, c: "var(--accent)" };
@@ -1217,25 +1230,23 @@ async function apply(ev, instant) {
   }
 }
 
-/* 输入区：回放时只读；实时运行时按 Agent 给不同的输入方式 */
-function renderIn() {
+/* 试用栏：接口可用时显示，任何时候都能直接输入、现场运行 */
+const TRY_INTEL = ["蜜雪冰城", "瑞幸咖啡", "喜茶"];
+const TRY_CONSOLE = ["给静安店在线设备下发配方 v1.4", "徐汇店离线设备都建高优先级工单，派给王工", "把所有工单都删掉"];
+function renderTry() {
   const k = LAB.cur;
-  if (LAB.mode !== "live") {
-    chatIn.innerHTML = `<input disabled placeholder="${LAB.liveOK ? "切到「实时运行」可自己输入" : "回放中不能输入"}" aria-label="输入"><button class="btn sm" disabled type="button">发送</button>`;
-    return;
-  }
-  if (k === "console") {
-    chatIn.innerHTML = `<a class="btn sm primary" href="console.html">打开模拟后台，自己下指令 →</a>`;
-    return;
-  }
-  if (k === "ops") chatIn.innerHTML = `<div class="devs">${FLEET.map(([id, store, s, lab]) => `<button type="button" class="${s}" data-dev="${id}">${id} · ${store} · ${lab}</button>`).join("")}</div><input id="liveText" maxlength="200" placeholder="或者直接说，例如：T2-031 出液好像不对" aria-label="输入"><button class="btn sm primary" id="liveGo" type="button">发送</button>`;
-  if (k === "intel") chatIn.innerHTML = `<input id="liveText" maxlength="20" placeholder="输入公司名或品类，例如：你所在的公司" aria-label="公司名或品类"><button class="btn sm primary" id="liveGo" type="button">生成简报</button>`;
-  $$("[data-dev]", chatIn).forEach((b) => (b.onclick = () => liveRun({ device_id: b.dataset.dev })));
-  const go = () => { const v = $("#liveText").value.trim(); if (v) liveRun(k === "ops" ? { text: v } : { name: v }); };
-  $("#liveGo").onclick = go;
-  $("#liveText").onkeydown = (e) => { if (e.key === "Enter" && !e.isComposing) go(); };
+  tryBar.hidden = !LAB.liveOK;
+  if (!LAB.liveOK) return;
+  if (k === "intel") tryBar.innerHTML = `<div class="row"><input id="liveText" maxlength="20" placeholder="输入公司名，例如你所在的公司" aria-label="公司名"><button class="btn primary" id="liveGo" type="button">生成简报 →</button></div><div class="sug">试试：${TRY_INTEL.map((x) => `<button type="button" data-q="${x}">${x}</button>`).join("")}</div>`;
+  if (k === "ops") tryBar.innerHTML = `<div class="sug devs">选一台设备：${FLEET.map(([id, store, st, lab]) => `<button type="button" class="${st}" data-dev="${id}">${id} · ${store} · ${lab}</button>`).join("")}</div><div class="row"><input id="liveText" maxlength="200" placeholder="或者直接说，例如：T2-031 出液好像不对" aria-label="描述设备问题"><button class="btn primary" id="liveGo" type="button">发送 →</button></div>`;
+  if (k === "console") tryBar.innerHTML = `<div class="sug">在模拟后台里试：${TRY_CONSOLE.map((x) => `<a href="console.html?task=${encodeURIComponent(x)}">${x}</a>`).join("")}</div><div class="row"><a class="btn primary" href="console.html">打开模拟后台，自己下指令 →</a></div>`;
+  const go = (v) => { v = (v ?? $("#liveText")?.value ?? "").trim(); if (v) liveRun(k === "ops" ? { text: v } : { name: v }); };
+  $$("[data-dev]", tryBar).forEach((b) => (b.onclick = () => liveRun({ device_id: b.dataset.dev })));
+  $$("[data-q]", tryBar).forEach((b) => (b.onclick = () => { $("#liveText").value = b.dataset.q; go(b.dataset.q); }));
+  if ($("#liveGo")) $("#liveGo").onclick = () => go();
+  if ($("#liveText")) $("#liveText").onkeydown = (e) => { if (e.key === "Enter" && !e.isComposing) go(); };
 }
-const lockIn = (on) => $$("button, input", chatIn).forEach((x) => (x.disabled = on));
+const lockIn = (on) => $$("button, input", tryBar).forEach((x) => (x.disabled = on));
 
 /* 播放控制 */
 function setup(k, mode) {
@@ -1249,8 +1260,8 @@ function setup(k, mode) {
   $$(".modes [data-m]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.m === mode)));
   $("#nowDesc").innerHTML = `<b>${esc(a.t)}</b> — ${esc(a.res)}`;
   $("#chatTitle").textContent = "· " + a.t + (mode === "edge" ? " · 越界请求" : mode === "live" ? " · 实时运行" : "");
-  $("#srcLbl").textContent = mode === "live" ? "实时 · DeepSeek" : "回放 · " + s.rec;
-  const empty = mode === "main" ? "点「▶ 播放」开始" : mode === "edge" ? "点「▶ 播放」，看 Agent 怎么处理越界请求" : k === "console" ? "后台操作 Agent 在模拟后台页面上运行" : k === "ops" ? "选一台设备，或者直接输入" : "输入一家公司或一个品类";
+  $("#srcLbl").textContent = mode === "live" ? "实时运行 · DeepSeek" : "示例回放";
+  const empty = mode === "main" ? "点「▶ 播放」看示例" : mode === "edge" ? "点「▶ 播放」，看 Agent 怎么处理越界请求" : "运行中…";
   chat.innerHTML = `<div class="chat-empty">${empty}</div>`;
   trace.innerHTML = "";
   roster.innerHTML = s.roster.map((r) => `<div class="rc" data-id="${r.id}" style="--c:${r.c}" title="${esc(r.r)}"><i></i><span>${esc(r.n)}</span></div>`).join("");
@@ -1262,7 +1273,7 @@ function setup(k, mode) {
   $("#ticker span").textContent = "等待开始";
   LAB.unseen = 0; $("#unseen").hidden = true;
   buildScrub();
-  renderIn();
+  if (tryBar.dataset.k !== k) { tryBar.dataset.k = k; renderTry(); }
   updCtl();
 }
 function buildScrub() {
@@ -1354,6 +1365,7 @@ async function liveRun(body) {
   setup(k, "live");
   const g = LAB.gen;
   LAB.playing = true; LAB.t0 = Date.now(); updCtl(); lockIn(true);
+  scrollToBench();
   try {
     if (k === "ops") {
       let r = await asJSON(await post("/api/ops", body));
@@ -1388,14 +1400,13 @@ async function liveRun(body) {
 if (!(window.SITE && window.SITE.api === null)) fetch(API + "/api/health").then((r) => r.json()).then((h) => {
   if (!h.live) return;
   LAB.liveOK = true;
-  $('.modes [data-m="live"]').hidden = false;
-  if (LAB.mode !== "live") renderIn();
+  renderTry();
 }).catch(() => {});
 
 $("#playBtn").addEventListener("click", () => (LAB.playing ? pause() : play()));
 $("#restartBtn").addEventListener("click", () => { setup(LAB.cur, LAB.mode); play(); });
 $$(".seg button").forEach((b) => b.addEventListener("click", () => { LAB.speed = +b.dataset.sp; $$(".seg button").forEach((x) => x.setAttribute("aria-pressed", String(x === b))); }));
-$$(".modes [data-m]").forEach((b) => b.addEventListener("click", () => { setup(LAB.cur, b.dataset.m); if (b.dataset.m !== "live") play(); else { const t = $("#liveText"); if (t && !isMobile()) t.focus(); } }));
+$$(".modes [data-m]").forEach((b) => b.addEventListener("click", () => { setup(LAB.cur, b.dataset.m); play(); }));
 $$(".mtabs button").forEach((b) => b.addEventListener("click", () => setPane(b.dataset.p)));
 $("#scrub").addEventListener("click", (e) => { const m = e.target.closest(".mk"); if (m) seekTo(LAB.cur, LAB.mode, +m.dataset.i); });
 

@@ -291,6 +291,9 @@ async function run(task) {
 window.runTask = run;
 $$(".tries button").forEach((b) => (b.onclick = () => run(b.dataset.task)));
 $("#taskGo").onclick = () => { const v = $("#taskIn").value.trim(); if (v) run(v); };
+// 从实验室试用栏点任务进来（console.html?task=...）：填好并直接运行
+const QT = new URLSearchParams(location.search).get("task");
+if (QT) { $("#taskIn").value = QT.slice(0, 120); setTimeout(() => run(QT.slice(0, 120)), 800); }
 $("#taskIn").onkeydown = (e) => { if (e.key === "Enter" && !e.isComposing) $("#taskGo").click(); };
 </script>
 </body>
