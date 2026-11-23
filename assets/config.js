@@ -1,2 +1,2 @@
-// 实时运行接口未部署：只放回放
-window.SITE = { api: null };
+// 实时运行接口（Netlify）
+window.SITE = { api: "https://aswen199315-resume.netlify.app" };
