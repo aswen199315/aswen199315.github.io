@@ -271,6 +271,7 @@ function makeAgent() {
 async function run(task) {
   if (running) return; running = true; steps = 0;
   const t0 = Date.now();
+  if (window.SITE && window.SITE.api === null && !window.__LLM_OVERRIDE) { log("err", "实时运行暂不可用"); running = false; return { success: false, data: "接口未部署" }; }
   try {
     const h = await (await fetch((window.SITE && window.SITE.api || "") + "/api/health")).json();
     if (!h.live && !window.__LLM_OVERRIDE) { log("err", "实时运行暂不可用：" + esc(h.reason)); running = false; return { success: false, data: h.reason }; }

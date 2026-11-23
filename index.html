@@ -1384,7 +1384,8 @@ async function liveRun(body) {
   if (g !== LAB.gen) return;
   LAB.playing = false; updCtl(); lockIn(false);
 }
-fetch(API + "/api/health").then((r) => r.json()).then((h) => {
+// api 为 null：这个部署没有接口（只有回放），不去探测
+if (!(window.SITE && window.SITE.api === null)) fetch(API + "/api/health").then((r) => r.json()).then((h) => {
   if (!h.live) return;
   LAB.liveOK = true;
   $('.modes [data-m="live"]').hidden = false;
