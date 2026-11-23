@@ -1,0 +1,4 @@
+page-agent 1.12.4（阿里巴巴开源，MIT 许可，见 LICENSE）
+来源：https://registry.npmmirror.com/page-agent/-/page-agent-1.12.4.tgz （sha512 已与 registry 元数据核对一致，2026-11-23）
+仓库：https://github.com/alibaba/page-agent
+用法：<script src="vendor/page-agent/page-agent.demo.js?autoInit=false"> 后 new window.PageAgent({...})，模型走本站 /api/llm 转发。
