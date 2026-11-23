@@ -538,6 +538,7 @@ ol.nums{padding-left:20px;display:grid;gap:6px;color:var(--text-2)}
 @media (max-width:640px){
   .facts{gap:4px}
   .facts div{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border:0;background:none;border-left:2px solid var(--accent-line);border-radius:0}
+  .facts span{flex:none}
   .facts p{margin:0;font-size:13.5px}
   .tool-h p{font-size:14.5px}
 }
@@ -954,7 +955,7 @@ const TOOLS = {
   },
   diag: {
     steps: ["理解故障现象", "排查可能原因", "给出处理步骤", "生成维修工单"],
-    ex: [{ device: "商用制冰机", symptom: "出冰越来越慢，冰块变小、发软" }, { device: "智能门锁", symptom: "指纹经常识别失败，要按好几次" }, { device: "电动车充电桩", symptom: "插枪后不启动充电，屏幕提示绝缘故障" }],
+    ex: [{ device: "商用制冰机", symptom: "出冰越来越慢，冰块变小、发软" }, { device: "智能门锁", symptom: "指纹经常识别失败，要按好几次" }, { device: "电动车充电桩", symptom: "插枪后不启动，提示绝缘故障" }],
     form: () => `<div class="row"><input id="fA" class="narrow" maxlength="40" placeholder="设备，例如：商用咖啡机" aria-label="设备"><input id="fB" maxlength="300" placeholder="故障现象，例如：出水量忽大忽小，有异响" aria-label="故障现象"><button class="btn primary" id="go" type="button">开始诊断 →</button></div>`,
     exLabel: (b) => `${b.device}：${b.symptom}`,
     read: () => ({ device: $("#fA").value.trim(), symptom: $("#fB").value.trim() }),
